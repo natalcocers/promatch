@@ -1,0 +1,36 @@
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Mockup del chat en ProMatch mostrando la propuesta de cierre del servicio hecha por el profesional, con opciones para el cliente de confirmar o seguir esperando</h2>
+<div style="background:var(--surface-1);border-radius:12px;padding:2rem 1rem;display:flex;justify-content:center">
+<div style="width:300px;background:#070d34;border-radius:36px;padding:10px">
+<div style="background:#fffbf7;border-radius:26px;padding:0;overflow:hidden;display:flex;flex-direction:column;height:520px">
+
+<div style="display:flex;align-items:center;gap:10px;padding:16px 16px 12px;border-bottom:0.5px solid #d3d1c7">
+<i class="ti ti-chevron-left" style="font-size:16px;color:#052c7c" aria-hidden="true"></i>
+<div style="width:34px;height:34px;border-radius:50%;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#0c447c">MP</div>
+<div style="flex:1">
+<p style="margin:0;font-size:13px;font-weight:500;color:#070d34">Martín Pérez</p>
+</div>
+</div>
+
+<div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<div style="align-self:flex-start;max-width:75%;background:#ffffff;border:0.5px solid #d3d1c7;border-radius:14px 14px 14px 4px;padding:9px 12px">
+<p style="margin:0;font-size:12px;color:#070d34">Listo, quedó todo funcionando. Cualquier cosa avisame</p>
+</div>
+
+<div style="align-self:center;width:100%;background:#ffffff;border:0.5px solid #d3d1c7;border-radius:14px;padding:14px;margin-top:6px">
+<p style="margin:0 0 4px;font-size:11px;color:#5f5e5a;text-align:center">Martín marcó el trabajo como terminado</p>
+<p style="margin:0 0 12px;font-size:13px;font-weight:500;color:#070d34;text-align:center">¿Quedó resuelto?</p>
+<div class="node" onclick="sendPrompt('El cliente confirma que el trabajo quedó resuelto y pasa a calificar')" style="background:#ec5e28;color:#052c7c;text-align:center;font-size:13px;font-weight:500;padding:10px;border-radius:10px;margin-bottom:8px;cursor:pointer">Sí, calificar servicio</div>
+<div class="node" onclick="sendPrompt('El cliente indica que todavía no está resuelto y sigue la conversación')" style="background:#ffffff;border:0.5px solid #d3d1c7;color:#5f5e5a;text-align:center;font-size:12px;padding:9px;border-radius:10px;cursor:pointer">Todavía no</div>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:8px;padding:10px 16px 16px;border-top:0.5px solid #d3d1c7;opacity:0.5">
+<i class="ti ti-paperclip" style="font-size:17px;color:#5f5e5a" aria-hidden="true"></i>
+<div style="flex:1;background:#ffffff;border:0.5px solid #d3d1c7;border-radius:999px;padding:8px 14px">
+<span style="font-size:12px;color:#888780">Escribí un mensaje...</span>
+</div>
+</div>
+
+</div>
+</div>
+</div>

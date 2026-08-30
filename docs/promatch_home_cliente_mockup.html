@@ -1,0 +1,77 @@
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Mockup del home en modo cliente de ProMatch: encabezado con ubicación, buscador, categorías de servicio y profesionales cercanos disponibles</h2>
+<div style="background:var(--surface-1);border-radius:12px;padding:2rem 1rem;display:flex;justify-content:center">
+<div style="width:300px;background:#070d34;border-radius:36px;padding:10px">
+<div style="background:#fffbf7;border-radius:26px;padding:16px;overflow:hidden">
+
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+<div>
+<p style="margin:0;font-size:16px;font-weight:500;color:#052c7c">Hola, Lucía</p>
+<p style="margin:2px 0 0;font-size:12px;color:#5f5e5a;display:flex;align-items:center;gap:4px"><i class="ti ti-map-pin" style="font-size:13px" aria-hidden="true"></i>Palermo, CABA</p>
+</div>
+<div style="width:34px;height:34px;border-radius:50%;background:#ffffff;border:0.5px solid #d3d1c7;display:flex;align-items:center;justify-content:center">
+<i class="ti ti-bell" style="font-size:16px;color:#052c7c" aria-hidden="true"></i>
+</div>
+</div>
+
+<div class="node" onclick="sendPrompt('Detallemos la pantalla de búsqueda cuando el usuario toca el buscador')" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;margin-bottom:16px;cursor:pointer">
+<i class="ti ti-search" style="font-size:16px;color:#052c7c" aria-hidden="true"></i>
+<span style="font-size:13px;color:#888780">¿Qué necesitás resolver hoy?</span>
+</div>
+
+<p style="margin:0 0 8px;font-size:13px;font-weight:500;color:#052c7c">Categorías</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px">
+<div class="node" onclick="sendPrompt('Detallemos qué pasa al elegir la categoría Hogar')" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer">
+<i class="ti ti-hammer" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<p style="margin:6px 0 0;font-size:11px;color:#070d34">Hogar</p>
+</div>
+<div class="node" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 6px;text-align:center">
+<i class="ti ti-device-laptop" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<p style="margin:6px 0 0;font-size:11px;color:#070d34">Tecnología</p>
+</div>
+<div class="node" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 6px;text-align:center">
+<i class="ti ti-sparkles" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<p style="margin:6px 0 0;font-size:11px;color:#070d34">Estética</p>
+</div>
+<div class="node" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 6px;text-align:center">
+<i class="ti ti-school" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<p style="margin:6px 0 0;font-size:11px;color:#070d34">Educación</p>
+</div>
+<div class="node" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 6px;text-align:center">
+<i class="ti ti-heart" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<p style="margin:6px 0 0;font-size:11px;color:#070d34">Cuidados</p>
+</div>
+<div class="node" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 6px;text-align:center">
+<i class="ti ti-stethoscope" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<p style="margin:6px 0 0;font-size:11px;color:#070d34">Salud</p>
+</div>
+</div>
+
+<p style="margin:0 0 8px;font-size:13px;font-weight:500;color:#052c7c">Cerca tuyo ahora</p>
+<div class="node" onclick="sendPrompt('Detallemos el perfil completo de un profesional al tocar su tarjeta')" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px;margin-bottom:8px;cursor:pointer">
+<div style="width:38px;height:38px;border-radius:50%;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#0c447c">MP</div>
+<div style="flex:1">
+<p style="margin:0;font-size:13px;font-weight:500;color:#070d34">Martín Pérez</p>
+<p style="margin:2px 0 0;font-size:11px;color:#5f5e5a">Plomería · 4.9 <i class="ti ti-star" style="font-size:11px;color:#ba7517" aria-hidden="true"></i></p>
+</div>
+<span style="background:#56c689;color:#173404;font-size:10px;padding:3px 8px;border-radius:999px">Disponible</span>
+</div>
+<div style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<div style="width:38px;height:38px;border-radius:50%;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#0c447c">SD</div>
+<div style="flex:1">
+<p style="margin:0;font-size:13px;font-weight:500;color:#070d34">Sofía Díaz</p>
+<p style="margin:2px 0 0;font-size:11px;color:#5f5e5a">Profesora de inglés · 5.0 <i class="ti ti-star" style="font-size:11px;color:#ba7517" aria-hidden="true"></i></p>
+</div>
+<span style="background:#f1efe8;color:#444441;font-size:10px;padding:3px 8px;border-radius:999px">Hoy 18hs</span>
+</div>
+
+<div style="display:flex;justify-content:space-around;align-items:center;border-top:0.5px solid #d3d1c7;padding-top:10px">
+<i class="ti ti-home-2" style="font-size:18px;color:#052c7c" aria-hidden="true"></i>
+<i class="ti ti-search" style="font-size:18px;color:#b4b2a9" aria-hidden="true"></i>
+<i class="ti ti-heart" style="font-size:18px;color:#b4b2a9" aria-hidden="true"></i>
+<i class="ti ti-message" style="font-size:18px;color:#b4b2a9" aria-hidden="true"></i>
+<i class="ti ti-user" style="font-size:18px;color:#b4b2a9" aria-hidden="true"></i>
+</div>
+
+</div>
+</div>
+</div>

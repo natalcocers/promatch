@@ -1,0 +1,221 @@
+/* Fuentes de marca (ver docs/promatch-brand-brief.md), autoalojadas
+   desde public/fonts/ (archivos entregados por la marca):
+   - Rounded: Momo Trust Display — solo weight 400, el bold es sintético
+   - Tech:    Space Grotesk — variable, soporta 300-700
+   - Caption: Manrope — variable, soporta 200-800. Uso puntual en texto
+     secundario (ver Onboarding), no reemplaza a Tech como cuerpo general.
+
+   Para cambiar de fuente editar SOLO las @font-face y las líneas
+   --font-rounded / --font-tech / --font-caption de acá abajo. No hace
+   falta tocar tailwind.config.ts ni ningún componente. */
+@font-face {
+  font-family: "Momo Trust Display";
+  src: url("/fonts/MomoTrustDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-rounded: "Momo Trust Display", sans-serif;
+  /* Pedido explícito: reemplazar Space Grotesk por Manrope en toda la app.
+     Se mantiene el nombre de variable --font-tech (y la @font-face de
+     Space Grotesk, sin uso) por si se vuelve a necesitar más adelante. */
+  --font-tech: "Manrope", sans-serif;
+  --font-caption: "Manrope", sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    background-color: #fffbf7;
+    color: #070d34;
+  }
+
+  html.dark,
+  html.dark body {
+    background-color: #070d34;
+    color: #fffbf7;
+  }
+
+  body {
+    font-family: var(--font-tech), system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-rounded), system-ui, sans-serif;
+  }
+
+  /* Momo Trust Display solo tiene el archivo Regular (400) cargado — no
+     hay un peso bold real todavía. Sin esto, el navegador "inventa" una
+     negrita engrosando el trazo del Regular (bold sintético), que se ve
+     más pesado/menos prolijo que una negrita de verdad. Apagamos ese
+     invento: los pedidos de bold en esta fuente caen al Regular real en
+     vez de a la versión falsa. El día que se sume un archivo Bold real,
+     alcanza con agregar su @font-face (peso 700) para que esto deje de
+     aplicar y vuelva a usarse negrita real. */
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-rounded {
+    font-synthesis: none;
+  }
+}
+
+/* Radar de la pantalla "buscando profesional" (mapa de UX 2.6,
+   docs/promatch_buscando_profesional_mockup.html). */
+@keyframes pm-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.pm-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #327af3;
+  animation: pm-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pm-ring.d2 {
+  animation-delay: 0.7s;
+}
+
+.pm-ring.d3 {
+  animation-delay: 1.4s;
+}
+
+/* Transición de entrada al cambiar de pantalla (App.tsx envuelve cada
+   ruta con esta clase, remontada por key={pathname}) — sutil, sin
+   bloquear la interacción ni tapar contenido.
+   Solo opacity, sin transform: un transform activo convierte a este div
+   en el contenedor de posición de sus descendientes "fixed" (spec CSS)
+   mientras dura la animación — y la TabBar, y los CTA fijos de Chat/perfil
+   de profesional, viven adentro. Con translateY se despegaban un instante
+   de su posición real en cada cambio de pantalla si había scroll. */
+@keyframes pm-page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pm-page-in {
+  animation: pm-page-in 0.22s ease-out both;
+}
+
+/* Aparición de badges de estado (Disponible ahora, Nueva, Agendado, etc.)
+   — un pequeño "pop" para que el estado se sienta vivo en vez de aparecer
+   de golpe. Ver Badge.tsx. */
+@keyframes pm-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* "Iris wipe" circular al cambiar de rol cliente/prestador
+   (RoleSwitch.tsx + CircleTransitionContext.tsx): un círculo del color de
+   marca crece desde el punto donde tocaste hasta cubrir toda la pantalla
+   (ahí, tapado, ocurre el cambio de ruta) y después encoge revelando la
+   pantalla nueva. --pm-cx/--pm-cy los pone React inline, con la posición
+   del click. 150vmax alcanza para cubrir cualquier esquina desde cualquier
+   punto de la pantalla. */
+@keyframes pm-circle-reveal {
+  0% {
+    clip-path: circle(0px at var(--pm-cx) var(--pm-cy));
+  }
+  50% {
+    clip-path: circle(150vmax at var(--pm-cx) var(--pm-cy));
+  }
+  100% {
+    clip-path: circle(0px at var(--pm-cx) var(--pm-cy));
+  }
+}
+
+.pm-circle-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #327af3;
+  pointer-events: none;
+  animation: pm-circle-reveal 0.7s ease-in-out both;
+}
+
+/* Mapa (ProvidersMap.tsx) en duotone navy/accent — los colores exactos de
+   marca (docs/promatch-brand-brief.md), no una aproximación con hue-rotate
+   (versión anterior, quedaba sobresaturada). El filtro SVG que define los
+   dos tonos vive en ProvidersMap.tsx (id="pm-map-duotone"); acá solo se
+   aplica al pane de teselas. Los pines quedan en otro pane (marker-pane),
+   así que sus colores de estado (verde funcional / navy) no se tocan. */
+.pm-map .leaflet-tile-pane {
+  filter: grayscale(1) sepia(25%) hue-rotate(175deg) saturate(80%) brightness(0.92);
+}
+
+/* En modo oscuro el mapa claro quedaba como un flash de luz en medio de
+   una pantalla navy — versión oscura del mismo mapa en vez de bajarle más
+   el brillo a la clara (eso la hubiera dejado gris/lavada en modo claro). */
+html.dark .pm-map .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.85) saturate(0.6);
+}
+
+html.dark .pm-map .leaflet-container {
+  background: #070d34;
+}
+
+/* El gris por defecto de Leaflet (fondo del contenedor, se ve en bordes y
+   huecos entre teselas) reemplazado por el cream exacto de marca
+   (#fffbf7, tailwind.config.ts) en vez de quedar como un gris genérico. */
+.pm-map .leaflet-container {
+  background: #fffbf7;
+}
+
+/* Respeta a quien pidió menos movimiento en su sistema operativo — acá
+   entran tanto los @keyframes (fade de página, pop de badges) como las
+   transiciones comunes (active:scale de Button/Card/Pill al tocar), que
+   la regla anterior no cubría por no ser animation sino transition. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

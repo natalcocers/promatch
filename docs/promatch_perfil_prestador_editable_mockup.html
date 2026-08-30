@@ -1,0 +1,71 @@
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Mockup del perfil profesional editable en ProMatch: estados de verificación de identidad y fiscal, especialidades, zona de trabajo y suscripción</h2>
+<div style="background:var(--surface-1);border-radius:12px;padding:2rem 1rem;display:flex;justify-content:center">
+<div style="width:300px;background:#070d34;border-radius:36px;padding:10px">
+<div style="background:#fffbf7;border-radius:26px;padding:16px;overflow:hidden">
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+<span style="font-size:15px;font-weight:500;color:#052c7c">Mi perfil profesional</span>
+<i class="ti ti-dots" style="font-size:16px;color:#5f5e5a" aria-hidden="true"></i>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+<div style="width:48px;height:48px;border-radius:50%;background:#e6f1fb;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#0c447c">MP</div>
+<div style="flex:1">
+<p style="margin:0;font-size:13px;font-weight:500;color:#070d34">Martín Pérez</p>
+<p style="margin:1px 0 0;font-size:11px;color:#5f5e5a">4.9 · 128 reseñas</p>
+</div>
+<i class="ti ti-pencil" style="font-size:15px;color:#327af3" aria-hidden="true"></i>
+</div>
+
+<div style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 12px;margin-bottom:16px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0">
+<span style="font-size:12px;color:#070d34;display:flex;align-items:center;gap:6px"><i class="ti ti-fingerprint" style="font-size:14px;color:#27500a" aria-hidden="true"></i>Identidad verificada</span>
+<i class="ti ti-check" style="font-size:14px;color:#27500a" aria-hidden="true"></i>
+</div>
+<div style="height:0.5px;background:#e2ded2;margin:6px 0"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0">
+<span style="font-size:12px;color:#070d34;display:flex;align-items:center;gap:6px"><i class="ti ti-file-invoice" style="font-size:14px;color:#a15a00" aria-hidden="true"></i>Situación fiscal</span>
+<span style="background:#f1e2c8;color:#7a4a00;font-size:9px;padding:3px 8px;border-radius:999px">En revisión</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+<span style="font-size:13px;font-weight:500;color:#052c7c">Especialidades</span>
+<i class="ti ti-pencil" style="font-size:13px;color:#327af3" aria-hidden="true"></i>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
+<span style="background:#052c7c;color:#ffffff;font-size:11px;padding:6px 12px;border-radius:999px">Plomería</span>
+<span style="background:#052c7c;color:#ffffff;font-size:11px;padding:6px 12px;border-radius:999px">Gas</span>
+<span style="background:#ffffff;border:0.5px dashed #b4b2a9;color:#5f5e5a;font-size:11px;padding:6px 12px;border-radius:999px">+ Agregar</span>
+</div>
+
+<div class="node" onclick="sendPrompt('El prestador edita su zona de trabajo')" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;cursor:pointer">
+<span style="font-size:12px;color:#070d34;display:flex;align-items:center;gap:6px"><i class="ti ti-map-pin" style="font-size:14px;color:#052c7c" aria-hidden="true"></i>Zona de trabajo</span>
+<span style="font-size:11px;color:#5f5e5a">Palermo, Villa Crespo</span>
+</div>
+
+<div class="node" onclick="sendPrompt('El prestador edita sus horarios de disponibilidad recurrente')" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;cursor:pointer">
+<span style="font-size:12px;color:#070d34;display:flex;align-items:center;gap:6px"><i class="ti ti-clock" style="font-size:14px;color:#052c7c" aria-hidden="true"></i>Horarios habituales</span>
+<span style="font-size:11px;color:#5f5e5a">Lun a Vie, 8 a 18hs</span>
+</div>
+
+<div class="node" onclick="sendPrompt('El prestador gestiona su suscripción')" style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;cursor:pointer">
+<span style="font-size:12px;color:#070d34;display:flex;align-items:center;gap:6px"><i class="ti ti-credit-card" style="font-size:14px;color:#052c7c" aria-hidden="true"></i>Suscripción</span>
+<span style="font-size:11px;color:#5f5e5a">Activa · vence 12/09</span>
+</div>
+
+<div class="node" onclick="sendPrompt('El prestador ve y edita su galería de trabajos realizados')" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;cursor:pointer">
+<span style="font-size:13px;font-weight:500;color:#052c7c">Trabajos realizados</span>
+<i class="ti ti-pencil" style="font-size:13px;color:#327af3" aria-hidden="true"></i>
+</div>
+<div style="display:flex;gap:8px">
+<div style="width:60px;height:60px;border-radius:10px;background:#e2ded2"></div>
+<div style="width:60px;height:60px;border-radius:10px;background:#e2ded2"></div>
+<div style="width:60px;height:60px;border-radius:10px;border:0.5px dashed #b4b2a9;display:flex;align-items:center;justify-content:center">
+<i class="ti ti-plus" style="font-size:16px;color:#5f5e5a" aria-hidden="true"></i>
+</div>
+</div>
+
+</div>
+</div>
+</div>

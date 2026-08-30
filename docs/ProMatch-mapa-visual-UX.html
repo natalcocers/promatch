@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>ProMatch — Mapa visual de UX</title>
+<style>
+  :root{
+    --navy-dark:#070d34;
+    --navy:#052c7c;
+    --blue:#327af3;
+    --green:#56c689;
+    --lime:#89dd7f;
+    --orange:#ec5e28;
+    --cream:#fffbf7;
+    --border:#d3d1c7;
+    --gray:#5f5e5a;
+    --amber:#f1e2c8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#f1efe8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--navy-dark);padding:2rem 1.5rem 4rem}
+  .wrap{max-width:1100px;margin:0 auto}
+  h1{color:var(--navy);font-size:1.6rem;margin-bottom:0.25rem}
+  .subtitle{color:var(--gray);font-size:0.9rem;margin-bottom:2rem}
+  .legend{display:flex;flex-wrap:wrap;gap:1rem;background:#ffffff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:2.5rem;font-size:0.78rem;color:var(--gray)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+  section{margin-bottom:3rem}
+  .section-title{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+  .section-title h2{font-size:1.05rem;color:var(--navy);margin:0;padding-bottom:6px;border-bottom:2px solid var(--navy)}
+  .section-title.prestador h2{border-bottom-color:var(--green)}
+  .section-title.transversal h2{border-bottom-color:var(--orange)}
+
+  .flow-row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:0.4rem}
+  .arrow{color:var(--border);font-size:22px;margin-top:78px;flex-shrink:0}
+
+  .node-wrap{display:flex;flex-direction:column;align-items:center;width:118px;flex-shrink:0}
+  .title{font-size:0.72rem;font-weight:600;color:var(--navy);text-align:center;margin:8px 0 2px;line-height:1.2}
+  .caption{font-size:0.65rem;color:var(--gray);text-align:center;line-height:1.3}
+
+  .thumb{width:96px;height:172px;background:var(--navy-dark);border-radius:20px;padding:5px}
+  .screen{background:var(--cream);border-radius:14px;height:100%;padding:6px;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+
+  .bar{height:4px;border-radius:2px;background:var(--navy)}
+  .bar.short{width:45%}
+  .pill{height:9px;border-radius:5px;background:#fff;border:1px solid var(--border)}
+  .grid3{display:flex;gap:3px}
+  .grid3 span{flex:1;height:13px;border-radius:3px;background:#fff;border:1px solid var(--border)}
+  .card{display:flex;align-items:center;gap:3px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:2px 3px;height:15px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#e6f1fb;flex-shrink:0}
+  .lines{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .lines i{display:block;height:3px;border-radius:1px;background:var(--border);font-style:normal}
+  .lines i.w60{width:60%} .lines i.w40{width:40%} .lines i.w80{width:80%}
+  .badge{width:15px;height:6px;border-radius:4px;flex-shrink:0}
+  .badge.green{background:var(--green)} .badge.orange{background:var(--orange)}
+  .badge.gray{background:#f1efe8} .badge.amber{background:var(--amber)}
+  .cta{height:13px;border-radius:5px;background:var(--orange);margin-top:auto}
+  .cta-outline{height:11px;border-radius:5px;border:1px solid var(--border);background:#fff}
+  .chip-row{display:flex;gap:2px;flex-wrap:wrap}
+  .chip{height:9px;border-radius:5px;flex:1;min-width:16px}
+  .chip.active{background:var(--navy)}
+  .chip.outline{background:#fff;border:1px solid var(--border)}
+  .bubble{height:10px;border-radius:6px;width:68%}
+  .bubble.left{background:#fff;border:1px solid var(--border);align-self:flex-start}
+  .bubble.right{background:var(--blue);align-self:flex-end}
+  .circle-lg{width:22px;height:22px;border-radius:50%;background:var(--navy);align-self:center;margin:4px auto}
+  .week{display:flex;justify-content:space-between}
+  .week span{width:9px;height:9px;border-radius:50%;background:#f1efe8;display:block}
+  .week span.active{background:var(--navy)}
+  .slot{display:flex;gap:3px;align-items:center}
+  .slot .bar-mini{flex:1;height:10px;border-radius:3px}
+  .bar-mini.free{background:#e6f1fb}
+  .bar-mini.booked{background:var(--blue)}
+  .plan-card{background:var(--navy);border-radius:8px;height:32px;flex-shrink:0}
+  .link{height:3px;width:45%;background:var(--blue);border-radius:2px;align-self:center}
+  .trust{display:flex;justify-content:space-between;align-items:center;height:10px}
+
+  .steps-row{display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center}
+  .step{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.78rem;color:var(--navy-dark);text-align:center;min-width:130px}
+  .step b{display:block;color:var(--navy);font-size:0.8rem;margin-bottom:2px}
+  .step-arrow{color:var(--border);font-size:18px}
+
+  .note{background:#fff;border:1px dashed var(--border);border-radius:10px;padding:14px 16px;font-size:0.8rem;color:var(--gray);margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>ProMatch — Mapa visual de UX</h1>
+  <p class="subtitle">Recorrido completo de pantallas, agrupado por camino. Cada miniatura es un esquema simplificado de la pantalla real que fuimos diseñando, no una captura literal.</p>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--navy)"></span>Header / navegación</span>
+    <span><span class="swatch" style="background:var(--green)"></span>Verificado / disponible</span>
+    <span><span class="swatch" style="background:var(--orange)"></span>Urgencia / acción (CTA)</span>
+    <span><span class="swatch" style="background:var(--blue)"></span>Selección activa / mensaje propio</span>
+    <span><span class="swatch" style="background:var(--amber)"></span>Estado en revisión</span>
+  </div>
+
+  <!-- ARQUITECTURA GENERAL -->
+  <section>
+    <div class="section-title"><h2>Arquitectura general</h2></div>
+    <div class="steps-row">
+      <div class="step"><b>Onboarding</b>Bienvenida y valor</div>
+      <span class="step-arrow">→</span>
+      <div class="step"><b>Registro único</b>Una identidad ProMatch</div>
+      <span class="step-arrow">→</span>
+      <div class="step"><b>Verificación IA</b>Identidad, no fiscal</div>
+      <span class="step-arrow">→</span>
+      <div class="step"><b>Modo cliente activo</b>Disponible de inmediato</div>
+      <span class="step-arrow">→</span>
+      <div class="step"><b>Activar prestador</b>Opcional, + validación fiscal</div>
+    </div>
+  </section>
+
+  <!-- CAMINO CLIENTE -->
+  <section>
+    <div class="section-title"><h2>Camino cliente</h2></div>
+    <div class="flow-row">
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="bar short"></div>
+          <div class="pill"></div>
+          <div class="grid3"><span></span><span></span><span></span></div>
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i><i class="w40"></i></div><div class="badge green"></div></div>
+        </div></div>
+        <p class="title">Home cliente</p>
+        <p class="caption">Buscador arriba de todo + categorías + cerca tuyo</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="bar short"></div>
+          <div class="grid3"><span></span><span></span><span></span></div>
+          <div class="grid3"><span></span><span></span><span></span></div>
+          <div class="link"></div>
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i></div><div class="badge green"></div></div>
+        </div></div>
+        <p class="title">Categoría → especialidad</p>
+        <p class="caption">Chips simples filtran; "Ver todos" como escape</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="bar short"></div>
+          <div class="chip-row"><div class="chip outline"></div><div class="chip outline"></div><div class="chip outline"></div></div>
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i><i class="w40"></i></div><div class="badge green"></div></div>
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i><i class="w40"></i></div><div class="badge gray"></div></div>
+        </div></div>
+        <p class="title">Listado filtrado</p>
+        <p class="caption">Orden por cercanía + disponibilidad combinadas</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="circle-lg" style="margin:2px auto"></div>
+          <div class="badge green" style="align-self:center"></div>
+          <div class="lines"><i class="w80"></i><i class="w60"></i><i class="w40"></i></div>
+          <div class="grid3"><span></span><span></span><span></span></div>
+          <div class="cta"></div>
+        </div></div>
+        <p class="title">Perfil del profesional</p>
+        <p class="caption">Sin precio publicado — se negocia en el chat</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="bar short"></div>
+          <div class="cta" style="margin-top:8px"></div>
+          <div class="cta-outline"></div>
+        </div></div>
+        <p class="title">Ahora / Agendado</p>
+        <p class="caption">Elección de modalidad antes del formulario</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="chip-row"><div class="chip active"></div><div class="chip outline"></div><div class="chip outline"></div></div>
+          <div class="chip-row"><div class="chip outline"></div><div class="chip outline"></div></div>
+          <div class="pill" style="height:16px"></div>
+          <div class="grid3" style="height:16px"><span></span></div>
+          <div class="cta"></div>
+        </div></div>
+        <p class="title">Formulario (chips de motivo)</p>
+        <p class="caption">Chips por especialidad + "Otro" + foto opcional</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="circle-lg"></div>
+          <div class="lines" style="align-items:center"><i class="w80" style="align-self:center"></i><i class="w60" style="align-self:center"></i></div>
+          <div class="card" style="opacity:.5"><div class="dot"></div><div class="lines"><i class="w40"></i></div></div>
+          <div class="link"></div>
+        </div></div>
+        <p class="title">Buscando profesional</p>
+        <p class="caption">Reenvío automático si no responde a tiempo</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="bar short"></div>
+          <div class="pill" style="height:11px"></div>
+          <div class="bubble left"></div>
+          <div class="bubble right"></div>
+          <div class="bubble left"></div>
+          <div class="pill" style="margin-top:auto"></div>
+        </div></div>
+        <p class="title">Chat con contexto</p>
+        <p class="caption">Tarjeta de pedido pineada, no un mensaje más</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i><i class="w40"></i></div><div class="badge green"></div></div>
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i><i class="w40"></i></div><div class="badge gray"></div></div>
+          <div class="card" style="border:1px dashed var(--border)"><div class="lines"><i class="w60"></i></div></div>
+        </div></div>
+        <p class="title">Favoritos</p>
+        <p class="caption">Muestra disponibilidad actual, no solo guardado</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CAMINO PRESTADOR -->
+  <section>
+    <div class="section-title prestador"><h2>Camino prestador</h2></div>
+    <div class="flow-row">
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="chip-row"><div class="chip outline"></div><div class="chip active"></div></div>
+          <div class="card" style="background:var(--green);border:none;height:20px"><div class="lines"><i class="w60" style="background:#173404"></i></div></div>
+          <div class="card" style="background:var(--orange);border:none"><div class="lines"><i class="w40" style="background:#052c7c"></i></div></div>
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i></div></div>
+        </div></div>
+        <p class="title">Home prestador</p>
+        <p class="caption">Switch de rol + toggle de disponibilidad hero</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i></div></div>
+          <div class="card" style="background:var(--orange);border:none;justify-content:space-between"><div class="lines"><i class="w40" style="background:#052c7c"></i></div></div>
+          <div class="chip-row"><div class="chip outline"></div><div class="chip outline"></div></div>
+          <div class="cta"></div>
+          <div class="cta-outline"></div>
+        </div></div>
+        <p class="title">Solicitud entrante</p>
+        <p class="caption">Countdown solo en "Ahora"; rechazar sin fricción</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="card"><div class="dot"></div><div class="lines"><i class="w60"></i></div></div>
+          <div class="trust"><div class="lines"><i class="w40"></i></div><div class="badge green"></div></div>
+          <div class="trust"><div class="lines"><i class="w40"></i></div><div class="badge amber"></div></div>
+          <div class="chip-row"><div class="chip active"></div><div class="chip active"></div></div>
+          <div class="grid3"><span></span><span></span></div>
+        </div></div>
+        <p class="title">Perfil profesional editable</p>
+        <p class="caption">Identidad y fiscal separados, no editables</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="week"><span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="slot"><div class="bar-mini free"></div></div>
+          <div class="slot"><div class="bar-mini booked"></div></div>
+          <div class="slot"><div class="bar-mini free"></div></div>
+          <div class="slot"><div class="bar-mini booked"></div></div>
+        </div></div>
+        <p class="title">Calendario</p>
+        <p class="caption">Disponibilidad base vs. turnos confirmados</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="plan-card"></div>
+          <div class="card"><div class="lines"><i class="w60"></i></div></div>
+          <div class="card"><div class="lines"><i class="w40"></i></div></div>
+          <div class="card"><div class="lines"><i class="w40"></i></div></div>
+          <div class="link"></div>
+        </div></div>
+        <p class="title">Suscripción y pago</p>
+        <p class="caption">$20.000/mes · "Activa" en verde funcional</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRANSVERSALES -->
+  <section>
+    <div class="section-title transversal"><h2>Pantallas transversales (ambos caminos)</h2></div>
+    <div class="flow-row">
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="lines" style="align-items:center"><i class="w60" style="align-self:center"></i></div>
+          <div style="display:flex;justify-content:center;gap:2px">
+            <span style="width:8px;height:8px;background:#ba7517;border-radius:1px"></span>
+            <span style="width:8px;height:8px;background:#ba7517;border-radius:1px"></span>
+            <span style="width:8px;height:8px;background:#ba7517;border-radius:1px"></span>
+            <span style="width:8px;height:8px;background:var(--border);border-radius:1px"></span>
+          </div>
+          <div class="chip-row"><div class="chip active"></div><div class="chip outline"></div></div>
+          <div class="cta"></div>
+        </div></div>
+        <p class="title">Cierre y calificación</p>
+        <p class="caption">Confirma el cliente, nunca se autocompleta sola</p>
+      </div>
+
+      <div class="node-wrap">
+        <div class="thumb"><div class="screen">
+          <div class="bar short"></div>
+          <div class="card" style="background:var(--orange);border:none"><div class="lines"><i class="w40" style="background:#052c7c"></i></div></div>
+          <div class="card"><div class="lines"><i class="w60"></i></div></div>
+          <div class="card" style="background:#eaf3de;border:none"><div class="lines"><i class="w40" style="background:#27500a"></i></div></div>
+        </div></div>
+        <p class="title">Notificaciones</p>
+        <p class="caption">Naranja urgente, verde solo si es aprobado/disponible</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="note">
+    Este mapa acompaña a <code>ProMatch-mapa-completo-UX.md</code> (el detalle escrito de cada pantalla y decisión) y a <code>promatch-brand-brief.md</code> / <code>promatch-deck-design-rules.md</code> (marca). Las miniaturas son esquemas de intención visual, no assets finales — sirven para ver de un vistazo cómo se relaciona la navegación completa.
+  </div>
+
+</div>
+</body>
+</html>

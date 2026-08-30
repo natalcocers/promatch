@@ -1,0 +1,36 @@
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Mockup de la pantalla de calificación del servicio en ProMatch, con estrellas, etiquetas rápidas y comentario opcional</h2>
+<div style="background:var(--surface-1);border-radius:12px;padding:2rem 1rem;display:flex;justify-content:center">
+<div style="width:300px;background:#070d34;border-radius:36px;padding:10px">
+<div style="background:#fffbf7;border-radius:26px;padding:20px 16px;overflow:hidden">
+
+<p style="margin:0 0 4px;font-size:15px;font-weight:500;color:#052c7c;text-align:center">¿Cómo estuvo el servicio?</p>
+<p style="margin:0 0 18px;font-size:12px;color:#5f5e5a;text-align:center">Martín Pérez · Pérdida de agua</p>
+
+<div style="display:flex;justify-content:center;gap:8px;margin-bottom:20px">
+<i class="ti ti-star-filled" style="font-size:26px;color:#ba7517" aria-hidden="true"></i>
+<i class="ti ti-star-filled" style="font-size:26px;color:#ba7517" aria-hidden="true"></i>
+<i class="ti ti-star-filled" style="font-size:26px;color:#ba7517" aria-hidden="true"></i>
+<i class="ti ti-star-filled" style="font-size:26px;color:#ba7517" aria-hidden="true"></i>
+<i class="ti ti-star" style="font-size:26px;color:#d3d1c7" aria-hidden="true"></i>
+</div>
+
+<p style="margin:0 0 8px;font-size:12px;color:#5f5e5a;text-align:center">Elegí lo que se aplique</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:18px">
+<span class="node" onclick="sendPrompt('El cliente selecciona la etiqueta Puntual')" style="background:#052c7c;color:#ffffff;font-size:11px;padding:7px 12px;border-radius:999px;cursor:pointer">Puntual</span>
+<span style="background:#ffffff;border:0.5px solid #d3d1c7;color:#070d34;font-size:11px;padding:7px 12px;border-radius:999px">Prolijo</span>
+<span style="background:#ffffff;border:0.5px solid #d3d1c7;color:#070d34;font-size:11px;padding:7px 12px;border-radius:999px">Buena comunicación</span>
+<span style="background:#ffffff;border:0.5px solid #d3d1c7;color:#070d34;font-size:11px;padding:7px 12px;border-radius:999px">Precio justo</span>
+</div>
+
+<div style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:10px;padding:10px;margin-bottom:18px;min-height:50px">
+<span style="font-size:12px;color:#888780">Contanos algo más (opcional)...</span>
+</div>
+
+<div class="node" onclick="sendPrompt('El cliente envía la calificación y el chat queda archivado')" style="background:#ec5e28;color:#052c7c;text-align:center;font-size:14px;font-weight:500;padding:13px;border-radius:12px;margin-bottom:8px;cursor:pointer">Enviar calificación</div>
+<div class="node" onclick="sendPrompt('El cliente omite la calificación por ahora')" style="text-align:center;padding:6px;cursor:pointer">
+<span style="font-size:12px;color:#5f5e5a;text-decoration:underline">Omitir por ahora</span>
+</div>
+
+</div>
+</div>
+</div>
