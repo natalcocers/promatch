@@ -21,3 +21,8 @@ Thumbs.db
 # Supabase CLI
 supabase/.branches
 supabase/.temp
+
+# Carpeta de trabajo donde Natalia deja imágenes fuente antes de que se
+# copien (ya optimizadas/renombradas) a public/gallery — no es lo que se
+# sirve en producción, no hace falta versionarla.
+/imgs
