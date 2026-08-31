@@ -20,12 +20,14 @@ export default function Login() {
     setError(null);
     setLoading(true);
 
+    const cleanEmail = email.trim().toLowerCase();
+
     if (mode === "login") {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password });
       if (error) setError(error.message);
       else navigate("/");
     } else {
-      const { data, error } = await supabase.auth.signUp({ email, password });
+      const { data, error } = await supabase.auth.signUp({ email: cleanEmail, password });
       if (error) {
         setError(error.message);
       } else if (data.user) {
@@ -79,6 +81,9 @@ export default function Login() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           className="w-full rounded-xl border-2 border-navy/15 px-4 py-3 font-tech text-sm text-navy"
         />
         <input
@@ -87,6 +92,9 @@ export default function Login() {
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           className="w-full rounded-xl border-2 border-navy/15 px-4 py-3 font-tech text-sm text-navy"
         />
 
