@@ -11,13 +11,18 @@ export default defineConfig({
         name: "ProMatch",
         short_name: "ProMatch",
         description: "La persona ideal para cada necesidad.",
-        theme_color: "#052c7c",
-        background_color: "#fffbf7",
+        theme_color: "#070d34",
+        background_color: "#070d34",
         display: "standalone",
-        // Placeholder: un solo ícono SVG hasta que exista el logo real en
-        // alta resolución (ver src/components/ui/Logo.tsx). Reemplazar por
-        // PNGs de 192x192 y 512x512 cuando llegue el asset definitivo.
-        icons: [{ src: "/favicon.svg", sizes: "any", type: "image/svg+xml" }]
+        // Generados desde el logo real (src/assets/logo-celeste.png) sobre
+        // fondo navy-dark de marca — ver public/pwa-*.png. El "maskable"
+        // tiene más padding (zona segura del 80%) para no recortarse mal
+        // con las máscaras de ícono de Android (círculo, squircle, etc.).
+        icons: [
+          { src: "/pwa-192x192.png", sizes: "192x192", type: "image/png" },
+          { src: "/pwa-512x512.png", sizes: "512x512", type: "image/png" },
+          { src: "/pwa-maskable-512x512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }
+        ]
       }
     })
   ],

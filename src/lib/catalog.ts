@@ -69,6 +69,13 @@ export const categories: Category[] = [
         icon: "hammer",
         enabled: true,
         reasonChips: ["Muebles a medida", "Reparación de puertas y ventanas", "Armado de muebles"]
+      },
+      {
+        id: "jardineria",
+        label: "Jardinería",
+        icon: "plant",
+        enabled: true,
+        reasonChips: ["Mantenimiento de jardín", "Poda", "Diseño de espacios verdes", "Armado de huerta"]
       }
     ]
   },
@@ -91,6 +98,48 @@ export const categories: Category[] = [
         icon: "router",
         enabled: true,
         reasonChips: ["Configuración de wifi", "Instalación de cámaras", "Virus y formateo"]
+      },
+      {
+        id: "redes-wifi",
+        label: "Redes y WiFi",
+        icon: "wifi",
+        enabled: true,
+        reasonChips: ["Configuración de router", "Extensión de señal", "Problemas de conexión"]
+      },
+      {
+        id: "smart-home",
+        label: "Hogar inteligente",
+        icon: "home-2",
+        enabled: true,
+        reasonChips: ["Instalación de asistente virtual", "Automatización de luces", "Enchufes inteligentes"]
+      },
+      {
+        id: "recuperacion-datos",
+        label: "Recuperación de datos",
+        icon: "database",
+        enabled: true,
+        reasonChips: ["Archivos borrados", "Disco duro dañado", "Backup de datos"]
+      },
+      {
+        id: "impresoras",
+        label: "Impresoras",
+        icon: "printer",
+        enabled: true,
+        reasonChips: ["Instalación de impresora", "Problemas de impresión", "Cambio de cartuchos"]
+      },
+      {
+        id: "soporte-general",
+        label: "Soporte técnico general",
+        icon: "tools",
+        enabled: true,
+        reasonChips: ["Formateo", "Instalación de programas", "Configuración general"]
+      },
+      {
+        id: "reparacion-pc",
+        label: "Reparación de PC y notebooks",
+        icon: "device-desktop",
+        enabled: true,
+        reasonChips: ["No enciende", "Cambio de componentes", "Limpieza y mantenimiento"]
       }
     ]
   },
@@ -113,6 +162,13 @@ export const categories: Category[] = [
         icon: "activity",
         enabled: true,
         reasonChips: ["Masaje descontracturante", "Drenaje linfático", "Masaje deportivo"]
+      },
+      {
+        id: "depilacion",
+        label: "Depilación",
+        icon: "sparkles",
+        enabled: false,
+        reasonChips: ["Depilación facial", "Depilación de piernas", "Depilación de axilas"]
       }
     ]
   },
@@ -135,6 +191,48 @@ export const categories: Category[] = [
         icon: "language",
         enabled: true,
         reasonChips: ["Conversación", "Preparación para examen internacional", "Inglés para negocios"]
+      },
+      {
+        id: "apoyo-escolar",
+        label: "Apoyo escolar",
+        icon: "school",
+        enabled: true,
+        reasonChips: ["Ayuda con tareas", "Repaso de materias", "Técnicas de estudio"]
+      },
+      {
+        id: "musica",
+        label: "Música",
+        icon: "music",
+        enabled: true,
+        reasonChips: ["Guitarra", "Piano", "Iniciación musical"]
+      },
+      {
+        id: "tutorias-universitarias",
+        label: "Tutorías universitarias",
+        icon: "school",
+        enabled: true,
+        reasonChips: ["Matemática", "Física", "Ingeniería"]
+      },
+      {
+        id: "programacion",
+        label: "Programación y tecnología",
+        icon: "code",
+        enabled: true,
+        reasonChips: ["Desde cero", "Python", "Desarrollo web"]
+      },
+      {
+        id: "preparacion-examenes",
+        label: "Preparación de exámenes",
+        icon: "clipboard-check",
+        enabled: true,
+        reasonChips: ["CBC", "Ingreso universitario"]
+      },
+      {
+        id: "arte-pintura",
+        label: "Arte y pintura",
+        icon: "palette",
+        enabled: true,
+        reasonChips: ["Óleo", "Acrílico", "Dibujo artístico"]
       }
     ]
   },
@@ -142,8 +240,23 @@ export const categories: Category[] = [
     id: "cuidados",
     label: "Cuidados",
     icon: "heart",
-    enabled: false,
-    specialties: []
+    enabled: true,
+    specialties: [
+      {
+        id: "cuidado-mascotas",
+        label: "Cuidado de mascotas",
+        icon: "paw",
+        enabled: true,
+        reasonChips: ["Cuidado en casa del cuidador", "Cuidado en tu casa", "Caminatas diarias"]
+      },
+      {
+        id: "paseo-perros",
+        label: "Paseo de perros",
+        icon: "walk",
+        enabled: true,
+        reasonChips: ["Paseo individual", "Paseo grupal", "Zona sur", "Zona norte"]
+      }
+    ]
   },
   {
     id: "salud",

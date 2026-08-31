@@ -55,7 +55,18 @@ import {
   IconStethoscope,
   IconApple,
   IconX,
-  IconCircleCheck
+  IconCircleCheck,
+  IconWifi,
+  IconDatabase,
+  IconPrinter,
+  IconDeviceDesktop,
+  IconPlant,
+  IconMusic,
+  IconCode,
+  IconClipboardCheck,
+  IconPalette,
+  IconPaw,
+  IconWalk
 } from "@tabler/icons-react";
 
 // Tipado laxo a propósito: cada ícono de @tabler/icons-react trae su
@@ -126,7 +137,18 @@ const ICONS: Record<string, IconComponent> = {
   stethoscope: IconStethoscope,
   apple: IconApple,
   x: IconX,
-  "circle-check": IconCircleCheck
+  "circle-check": IconCircleCheck,
+  wifi: IconWifi,
+  database: IconDatabase,
+  printer: IconPrinter,
+  "device-desktop": IconDeviceDesktop,
+  plant: IconPlant,
+  music: IconMusic,
+  code: IconCode,
+  "clipboard-check": IconClipboardCheck,
+  palette: IconPalette,
+  paw: IconPaw,
+  walk: IconWalk
 };
 
 // Sigue el tamaño de fuente heredado (className="text-lg" etc. en todos
