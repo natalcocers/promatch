@@ -1,13 +1,27 @@
 /* Fuentes de marca (ver docs/promatch-brand-brief.md), autoalojadas
-   desde public/fonts/ (archivos entregados por la marca):
-   - Rounded: Momo Trust Display — solo weight 400, el bold es sintético
-   - Tech:    Space Grotesk — variable, soporta 300-700
-   - Caption: Manrope — variable, soporta 200-800. Uso puntual en texto
-     secundario (ver Onboarding), no reemplaza a Tech como cuerpo general.
+   desde public/fonts/ (archivos entregados por la marca o bajados de
+   Google Fonts — @font-face de acá abajo funciona igual para las dos):
+   - Rounded: Bricolage Grotesque — variable, soporta 200-800. Reemplaza a
+     Momo Trust Display (pedido explícito, dirección más "divertida" con
+     saltos de tamaño grandes). Momo queda solo para el wordmark
+     "Mi Profesional" (--font-logo / clase font-logo).
+   - Tech:    Space Grotesk — variable, soporta 300-700. Sin uso desde que
+     --font-tech pasó a Manrope (ver más abajo), @font-face queda por las
+     dudas.
+   - Caption: Manrope — variable, soporta 200-800. Es la fuente de cuerpo
+     de facto ahora (font-tech Y font-caption apuntan acá).
 
    Para cambiar de fuente editar SOLO las @font-face y las líneas
    --font-rounded / --font-tech / --font-caption de acá abajo. No hace
    falta tocar tailwind.config.ts ni ningún componente. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque-Variable.woff2") format("woff2-variations");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Momo Trust Display";
   src: url("/fonts/MomoTrustDisplay-Regular.ttf") format("truetype");
@@ -33,12 +47,15 @@
 }
 
 :root {
-  --font-rounded: "Momo Trust Display", sans-serif;
+  --font-rounded: "Bricolage Grotesque", sans-serif;
   /* Pedido explícito: reemplazar Space Grotesk por Manrope en toda la app.
      Se mantiene el nombre de variable --font-tech (y la @font-face de
      Space Grotesk, sin uso) por si se vuelve a necesitar más adelante. */
   --font-tech: "Manrope", sans-serif;
   --font-caption: "Manrope", sans-serif;
+  /* Wordmark "Mi Profesional". Momo trae un solo peso (400): usar
+     font-normal, no font-bold, para evitar negrita sintética. */
+  --font-logo: "Momo Trust Display", sans-serif;
 }
 
 @tailwind base;
@@ -69,21 +86,6 @@
     font-family: var(--font-rounded), system-ui, sans-serif;
   }
 
-  /* Momo Trust Display solo tiene el archivo Regular (400) cargado — no
-     hay un peso bold real todavía. Sin esto, el navegador "inventa" una
-     negrita engrosando el trazo del Regular (bold sintético), que se ve
-     más pesado/menos prolijo que una negrita de verdad. Apagamos ese
-     invento: los pedidos de bold en esta fuente caen al Regular real en
-     vez de a la versión falsa. El día que se sume un archivo Bold real,
-     alcanza con agregar su @font-face (peso 700) para que esto deje de
-     aplicar y vuelva a usarse negrita real. */
-  h1,
-  h2,
-  h3,
-  h4,
-  .font-rounded {
-    font-synthesis: none;
-  }
 }
 
 /* Radar de la pantalla "buscando profesional" (mapa de UX 2.6,

@@ -66,7 +66,8 @@ import {
   IconClipboardCheck,
   IconPalette,
   IconPaw,
-  IconWalk
+  IconWalk,
+  IconArrowRight
 } from "@tabler/icons-react";
 
 // Tipado laxo a propósito: cada ícono de @tabler/icons-react trae su
@@ -148,7 +149,8 @@ const ICONS: Record<string, IconComponent> = {
   "clipboard-check": IconClipboardCheck,
   palette: IconPalette,
   paw: IconPaw,
-  walk: IconWalk
+  walk: IconWalk,
+  "arrow-right": IconArrowRight
 };
 
 // Sigue el tamaño de fuente heredado (className="text-lg" etc. en todos

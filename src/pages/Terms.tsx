@@ -10,7 +10,7 @@ export default function Terms() {
 
       <div className="space-y-4 font-caption text-sm leading-relaxed text-navy/70 dark:text-cream/70">
         <p>
-          ProMatch conecta clientes con profesionales independientes verificados. No cobramos comisión por
+          Mi Profesional conecta clientes con profesionales independientes verificados. No cobramos comisión por
           los servicios contratados a través de la app.
         </p>
         <p>

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/Button";
 import logoCeleste from "@/assets/logo-celeste.png";
 
@@ -8,6 +9,7 @@ import logoCeleste from "@/assets/logo-celeste.png";
 // para ambos casos, la verificación de identidad viene después, no acá.
 export default function Login() {
   const navigate = useNavigate();
+  const { enterAsGuest } = useAuth();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,12 +41,12 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-navy px-6">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-navy-dark px-6">
       <div className="flex flex-col items-center gap-1">
         <img src={logoCeleste} alt="" className="h-14 w-14" />
-        <p className="font-rounded text-2xl font-bold">
-          <span className="text-cream">Pro</span>
-          <span className="text-accent">Match</span>
+        <p className="font-logo text-2xl font-normal">
+          <span className="text-cream">Mi</span>
+          <span className="text-accent">Profesional</span>
         </p>
       </div>
 
@@ -103,6 +105,17 @@ export default function Login() {
         <Button type="submit" disabled={loading} className="w-full">
           {loading ? "Un momento..." : mode === "login" ? "Entrar" : "Crear cuenta"}
         </Button>
+
+        <button
+          type="button"
+          onClick={() => {
+            enterAsGuest();
+            navigate("/");
+          }}
+          className="w-full text-center font-tech text-sm font-bold text-navy/60 underline"
+        >
+          Entrar como invitado
+        </button>
       </form>
     </div>
   );

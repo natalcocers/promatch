@@ -8,9 +8,9 @@ export default function Onboarding() {
       <div className="flex flex-col items-center gap-1">
         <img src={logoCeleste} alt="" className="h-56 w-56" />
         <div className="flex flex-col items-center gap-1">
-          <p className="font-rounded text-6xl font-bold">
-            <span className="text-cream">Pro</span>
-            <span className="text-accent">Match</span>
+          <p className="font-logo text-[clamp(2rem,11vw,3rem)] font-normal leading-none">
+            <span className="text-cream">Mi</span>
+            <span className="text-accent">Profesional</span>
           </p>
           <h1 className="font-tech text-xl font-bold text-cream">
             La persona ideal para cada necesidad.

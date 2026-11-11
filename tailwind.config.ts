@@ -31,7 +31,8 @@ export default {
         // hace falta tocar componentes ni este config.
         rounded: ["var(--font-rounded)", "system-ui", "sans-serif"],
         tech: ["var(--font-tech)", "system-ui", "sans-serif"],
-        caption: ["var(--font-caption)", "system-ui", "sans-serif"]
+        caption: ["var(--font-caption)", "system-ui", "sans-serif"],
+        logo: ["var(--font-logo)", "system-ui", "sans-serif"]
       },
       backgroundImage: {
         "brand-gradient": "linear-gradient(135deg, #052c7c 0%, #327af3 100%)"

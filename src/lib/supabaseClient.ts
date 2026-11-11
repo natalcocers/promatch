@@ -8,7 +8,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   // "sin backend conectado todavía" y que las pantallas muestren su
   // estado vacío en vez de una pantalla blanca. Ver README.md.
   console.warn(
-    "[ProMatch] Faltan VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY — copiá .env.example a .env y completá con tu proyecto de Supabase."
+    "[Mi Profesional] Faltan VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY — copiá .env.example a .env y completá con tu proyecto de Supabase."
   );
 }
 

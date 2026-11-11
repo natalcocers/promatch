@@ -13,10 +13,25 @@ export interface Specialty {
   reasonChips: string[];
 }
 
+export type CategoryAccent = "green" | "blue" | "orange";
+
 export interface Category {
   id: string;
   label: string;
+  // Título largo + bajada para la grilla de categorías del home (rediseño
+  // pedido por Natalia con referencia visual: tarjeta navy, ícono, título
+  // de dos líneas y bajada corta). "label" sigue siendo la forma corta
+  // usada en breadcrumbs (BackHeader, Contact, RequestDetail) — no la
+  // reemplaza, así no hay que acortar el título en esos lugares.
+  title: string;
+  tagline: string;
   icon: string;
+  // Color de acento decorativo de la tarjeta (anillo + botón circular).
+  // "green" usa el verde LIMA decorativo (#89dd7f), nunca el verde
+  // funcional (#56c689) — ese queda exclusivo de "Verificado"/"Disponible
+  // ahora" (brand-brief). Rota entre las 3 tonalidades de la marca que
+  // pueden usarse como acento genérico.
+  accent: CategoryAccent;
   enabled: boolean;
   specialties: Specialty[];
 }
@@ -25,7 +40,10 @@ export const categories: Category[] = [
   {
     id: "hogar",
     label: "Hogar",
-    icon: "hammer",
+    title: "Hogar y Mantenimiento",
+    tagline: "Tu casa, en buenas manos.",
+    icon: "home-2",
+    accent: "green",
     enabled: true,
     specialties: [
       {
@@ -82,7 +100,10 @@ export const categories: Category[] = [
   {
     id: "tecnologia",
     label: "Tecnología",
+    title: "Tecnología y Dispositivos",
+    tagline: "Soluciones para tu día digital.",
     icon: "device-laptop",
+    accent: "blue",
     enabled: true,
     specialties: [
       {
@@ -146,7 +167,10 @@ export const categories: Category[] = [
   {
     id: "estetica",
     label: "Estética",
+    title: "Estética y Bienestar",
+    tagline: "Sentite bien, todos los días.",
     icon: "sparkles",
+    accent: "orange",
     enabled: true,
     specialties: [
       {
@@ -175,7 +199,10 @@ export const categories: Category[] = [
   {
     id: "educacion",
     label: "Educación",
+    title: "Educación",
+    tagline: "Aprendé, avanzá, sin límites.",
     icon: "school",
+    accent: "blue",
     enabled: true,
     specialties: [
       {
@@ -239,7 +266,10 @@ export const categories: Category[] = [
   {
     id: "cuidados",
     label: "Cuidados",
-    icon: "heart",
+    title: "Cuidados",
+    tagline: "Personas, mascotas y lo que más importa.",
+    icon: "paw",
+    accent: "green",
     enabled: true,
     specialties: [
       {
@@ -261,7 +291,10 @@ export const categories: Category[] = [
   {
     id: "salud",
     label: "Salud",
+    title: "Salud",
+    tagline: "Profesionales cerca de vos.",
     icon: "stethoscope",
+    accent: "green",
     enabled: true,
     specialties: [
       {

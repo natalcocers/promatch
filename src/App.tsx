@@ -28,9 +28,9 @@ import ProviderCalendar from "@/pages/provider/Calendar";
 import ProviderSubscription from "@/pages/provider/Subscription";
 
 function RequireAuth({ children }: { children: ReactNode }) {
-  const { session, loading } = useAuth();
+  const { session, guest, loading } = useAuth();
   if (loading) return <p className="p-6 font-tech text-sm text-navy/50">Cargando...</p>;
-  if (!session) return <Navigate to="/bienvenida" replace />;
+  if (!session && !guest) return <Navigate to="/bienvenida" replace />;
   return <>{children}</>;
 }
 

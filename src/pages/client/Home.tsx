@@ -51,24 +51,14 @@ export default function ClientHome() {
       <section className="px-6 pt-6">
         <p className="mb-2 font-rounded text-sm font-bold text-navy dark:text-cream">Categorías</p>
         <div className="grid grid-cols-3 gap-2">
-          {categories.map((cat) =>
-            cat.enabled ? (
-              <Link key={cat.id} to={`/categoria/${cat.id}`}>
-                <div className="flex flex-col items-center gap-1.5 rounded-xl border-2 border-navy/15 dark:border-cream/15 bg-cream dark:bg-navy-dark py-3 text-center hover:border-accent">
-                  <Icon name={cat.icon} className="text-lg text-navy dark:text-cream" />
-                  <span className="font-caption text-[11px] font-bold text-navy dark:text-cream">{cat.label}</span>
-                </div>
-              </Link>
-            ) : (
-              <div
-                key={cat.id}
-                className="flex flex-col items-center gap-1.5 rounded-xl border-2 border-navy/15 dark:border-cream/15 bg-cream dark:bg-navy-dark py-3 text-center opacity-40"
-              >
+          {categories.map((cat) => (
+            <Link key={cat.id} to={`/categoria/${cat.id}`}>
+              <div className="flex flex-col items-center gap-1.5 rounded-xl border-2 border-navy/15 dark:border-cream/15 bg-cream dark:bg-navy-dark py-3 text-center hover:border-accent">
                 <Icon name={cat.icon} className="text-lg text-navy dark:text-cream" />
                 <span className="font-caption text-[11px] font-bold text-navy dark:text-cream">{cat.label}</span>
               </div>
-            )
-          )}
+            </Link>
+          ))}
         </div>
       </section>
 

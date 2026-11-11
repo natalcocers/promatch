@@ -8,8 +8,8 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "ProMatch",
-        short_name: "ProMatch",
+        name: "Mi Profesional",
+        short_name: "Mi Profesional",
         description: "La persona ideal para cada necesidad.",
         theme_color: "#070d34",
         background_color: "#070d34",

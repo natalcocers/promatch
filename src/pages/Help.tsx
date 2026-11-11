@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: "¿Qué significa 'Identidad verificada'?",
-    a: "Ese profesional ya validó su identidad con ProMatch. Es un requisito para aparecer en las búsquedas."
+    a: "Ese profesional ya validó su identidad con Mi Profesional. Es un requisito para aparecer en las búsquedas."
   },
   {
     q: "¿Cómo cancelo una solicitud?",

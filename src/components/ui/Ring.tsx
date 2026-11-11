@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 interface RingProps {
   corner?: "top-right" | "bottom-left" | "bottom-right" | "top-left";
-  tone?: "orange" | "lime" | "subtle";
+  tone?: "orange" | "lime" | "accent" | "subtle";
   className?: string;
 }
 
@@ -20,6 +20,7 @@ export function Ring({ corner = "bottom-right", tone = "orange", className }: Ri
   const color = {
     orange: "border-orange",
     lime: "border-green-lime",
+    accent: "border-accent",
     subtle: "border-cream/20"
   }[tone];
 
